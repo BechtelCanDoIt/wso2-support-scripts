@@ -1,0 +1,3 @@
+openssl s_client -connect $1 </dev/null | openssl x509 -outform pem > tmpcert.pem
+openssl x509 -in tmpcert.pem -noout -serial -dates
+cat tmpcert.pem
