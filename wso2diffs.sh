@@ -105,17 +105,16 @@ find "$matching_folder" -type f \
                 #echo "--> 5 DEBUG: getting ready to do diff test using cmp"
                 # Check if the files are different
                 if ! cmp -s "$matching_file" "$control_file"; then
-                    echo "--> 6 DEBUG: cmp says there is a difference."
-                    echo "--> 6 DEBUG: Control file - $control_file"
-                    echo "--> 6 DEBUG: Matching file - $matching_file"
+                    #echo "--> 6 DEBUG: cmp says there is a difference."
+                    #echo "--> 6 DEBUG: Control file - $control_file"
+                    #echo "--> 6 DEBUG: Matching file - $matching_file"
 
                     # Create the diff folder
                     diff_file="${matching_file#$matching_folder}"
                     diff_file=${diff_file//\//_}
                     diff_file=${diff_file//_[^/]*_/\/}
-                    #diff_file=${diff_file//./_diff.}
                     diff_file="${diff_folder}/${diff_file}"
-                    echo "--> 6 DEBUG: diff_file - $diff_file"
+                    #echo "--> 6 DEBUG: diff_file - $diff_file"
                     diff -u "$control_file" "$matching_file" > "$diff_file"
                     echo "=== CREATED DIFF FILE: $diff_file ==="
                 fi
